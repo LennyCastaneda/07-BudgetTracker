@@ -1,0 +1,243 @@
+/* ================================= 
+  Base Element Styles
+==================================== */
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+body {
+	font-family: 'Varela Round', sans-serif;
+	line-height: 1.6;
+	color: #3a3a3a;
+}
+
+p {
+	font-size: .95em;
+	margin-bottom: 1.8em;
+}
+
+h2,
+h3,
+a {
+	color: #000;
+}
+
+h2,
+h3 {
+	margin-top: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+/* ================================= 
+  Base Layout Styles
+==================================== */
+
+/* ---- Main header jumbotron ---- */
+
+.main-header {
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+
+/* ---- Income Entry Container ---- */
+
+
+div.wrapper {
+  min-height: calc(100vh - 64px);
+/*   min-height: auto; */
+  /* Negative indent footer by its height */
+  margin: 0px auto 0px;
+  /* Pad bottom by footer height */
+  padding: 0 0px 0px;
+  width: 100%;
+/*   border: 5px solid #E18728; */
+}
+
+.form-group {
+	text-align: left;
+	margin: 0 0% 0;
+	padding-top: 1%;
+}
+
+.entriesTitle {
+	padding-bottom: 20px;
+}
+
+.panel-heading {
+	margin-bottom:  0px;
+}
+
+.description, .button, .amount, .input-group {
+	width:  92%;
+	margin: 0 auto;
+	text-align: left;
+}
+
+.amount {
+	width:  100%;
+}
+
+.input-group-addon {
+	width: 5%;
+	margin: 0 auto;
+}
+
+/* centered columns styles */
+.row-centered {
+	text-align:center;
+}
+
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+.col-fixed {
+    /* custom width */
+    width:320px;
+}
+
+
+.button {
+	padding-top:  15px;
+	padding-bottom: 25px;
+}
+
+.col-lg-6 {
+	padding-left: 5%;
+    padding-right: 0%;
+}
+
+.panel {
+	text-align: left;
+} 
+
+.panel-heading {
+	padding-top: 20px;
+}
+
+/* ================================= 
+	Table
+==================================== */
+th.tbl-text-right {
+	text-align: right;
+}
+
+th.tbl-text-center {
+	text-align: center;
+}
+
+#bottom-container {
+	width: 70%;
+	margin-left: 15%;
+}
+
+.borderless td, .borderless th {
+    border: none;
+}
+
+#summary-tbl td {
+	   border: none;
+}
+
+td. .ng-binding {
+	text-align: right;
+}
+/* ================================= 
+	Footer
+==================================== */
+
+/*Establishes the parameters for sticky footer*/
+.main-footer, .sticky-footer  {
+	font-size: 1em;
+	clear: both;
+	text-align: center;
+}
+
+.main-footer {
+	position: relative;
+	right:  0;
+	bottom:  0;
+	left:  0;
+	padding: .5em 0;
+	margin-top: 5px;
+	background: #d9e4ea;
+} 
+
+.sticky-footer {
+	height: .5em;
+}
+
+
+/* ================================= 
+  Media Queries
+==================================== */
+
+/* iPhone 6s Plus */
+@media (max-width: 769px) {
+
+	.container {
+		width: 100%;
+		margin: 0 auto;
+	}
+
+	.containerLeft, .col-xs-12, .col-sm-12 {
+	  width: 100%;
+	  padding: 9em;
+	  text-align:center;
+}
+
+
+	.containerBottom, .col-xs-12, .col-sm-12 {
+	  width: 100%;
+	  padding: 0%;
+	  margin: 0 auto;
+	  text-align:center;
+}
+
+
+div.wrapper {
+  /* Pad bottom by footer height */
+  padding: 0 0px 0px;
+
+}
+	/* ---- Float clearfix ---- */
+
+	.clearfix::after {
+		content: " ";
+		display: table;
+		clear: both;
+	}
+
+}
+
+/* iPad Plus */
+@media (min-width: 1025px) {
+	
+	.container {
+		width: 100%;
+		max-width: 1150px;
+	}
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="budgetApp">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"">
+
+	<title>Budget Tracker App</title>
+	<!-- bower:css -->
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+	<!-- endbower -->
+
+	<!-- inject:css -->
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<!-- endinject -->
+
+</head>
+
+<body ng-controller="calculateCtrl">
+
+	<!-- Main wrapper class div-->
+	<div class="wrapper container">
+		<div class="jumbotron display-3 text-center lead">
+			<header class="main-header">
+				<h1>Budget Tracker</h1>	
+			</header> <!-- /header -->
+		</div> <!-- Jumbotron div-->
+		
+
+	<!-- LEFT CONTAINER - INCOME ENTRIES  -->
+
+		<div class="row col-lg-6 col-xs-6 col-sm-12 row row-centered" id="left-container">
+			<div class="panel panel-success"> <!-- Income entries panel container -->
+						<h2 class="entriesTitle panel-heading" for="incomeEntries">Income Entries</h2>
+				<form class="form"> <!-- Income entries main form container -->
+					<div class="form-group">
+						<div class="description">
+					    	<label for="description">Description</label>
+					    </div>
+					    <div class="description">
+					    	<input type="text" class="form-control" id="userAmount" placeholder="Description" ng-model="newIncome.text">
+					    </div>
+					</div>
+					<div class="form-group">
+						<div class="description">
+							<label for="description">Amount</label>
+						</div>
+					<div class="input-group">
+						<!-- <div class="dollar-input"> -->
+						<div class="input-group-addon">$</div>
+						<div class="amount">
+							<input type="number" class="form-control" id="userAmount" placeholder="Amount" ng-model="newIncome.amount">
+						</div>
+						<!-- </div> -->
+					</div>
+					<div class="button">
+						<button type="submit" class="btn btn-success form-control" ng-click="addIncome()">+ Add Income</button>
+					</div>
+				</div>
+				<!--  Create a form to add user income arrays -->
+				<form class="container">  <!-- Income entries table container -->
+					<div class="container table-responsive"> <!-- Table container -->
+						<table class="table table-striped table-fixedheader table borderless">
+							<thead>
+								<tr>
+									<th>Description</th>
+									<th class="tbl-text-right">Amount</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="income in incomes">
+									<td>{{income.description}}</td>
+									<td class="text-right">{{income.amount | currency}}</td>
+								</tr>
+							</tbody>
+						</table> <!-- Income table container -->
+					</div> <!-- Table container -->
+				</form> <!-- Income entries table container -->
+				</form> <!-- Income entries main form container -->
+			</div> <!-- Income entries panel container -->
+		</div> <!-- Income container div-->
+
+
+
+		<!-- RIGHT CONTAINER - EXPENSE ENTRIES  -->
+
+		<div class="row col-lg-6 col-xs-6 col-sm-12 row row-centered" id="right-container">
+			<div class="panel panel-danger"> <!-- Expense entries panel container -->
+						<h2 class="entriesTitle panel-heading" for="incomeEntries">Expense Entries</h2>
+				<form class="form"> <!-- Expense entries main form container -->
+					<div class="form-group">
+						<div class="description">
+					    	<label for="description">Description</label>
+					    </div>
+					    <div class="description">
+					    	<input type="text" class="form-control" id="userAmount" placeholder="Description" ng-model="newExpense.text">
+					    </div>
+					</div>
+					<div class="form-group">
+						<div class="description">
+							<label for="description">Amount</label>
+						</div>
+					<div class="input-group">
+						<!-- <div class="dollar-input"> -->
+							<div class="input-group-addon">$</div>
+						<!-- </div> -->
+						<div class="amount">
+							<input type="number" class="form-control" id="userAmount" placeholder="Amount" ng-model="newExpense.amount">
+						</div>
+						<!-- </div> -->
+					</div>
+					<div class="button">
+						<button type="submit" class="btn btn-danger form-control" ng-click="addExpense()">+ Add Expense</button>
+					</div>
+				</div>
+				<!--  Create a form to add user expense arrays -->
+				<form class="container" >  <!-- Expense  entries table container -->
+					<div class="container table-responsive"> <!-- Table container -->
+						<table class="table table-striped table-fixedheader table borderless">
+							<thead>
+								<tr>
+									<th>Description</th>
+									<th class="tbl-text-right">Amount</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="expense in expenses">
+									<td>{{expense.description}}</td>
+									<td class="text-right">{{expense.amount | currency}}</td>
+								</tr>
+							</tbody>
+						</table> <!-- Expense  table container -->
+					</div> <!-- Table container -->
+				</form> <!-- Expense  entries table container -->
+				</form> <!-- Expense  entries main form container -->
+			</div> <!-- Expense entries panel container -->
+		</div> <!-- Expense entries container -->
+
+		<!-- SUMMARY CONTAINER -->
+
+		<div class="row row-centered col-lg-8 col-sm-12 col-xs-12" id="bottom-container">
+			<div class="panel panel-info"> <!-- Income entries panel container -->
+				<h2 class="entriesTitle panel-heading" for="incomeEntries">Summary</h2>
+				<!-- <div class="container table-responsive"> --> <!-- Table container -->
+				<table class="table table-striped table-fixedheader table borderless">
+					<thead>
+						<tr id="summary-tbl">
+							<th>Total Income</th>
+							<th class="tbl-text-center">Left after spending</th>
+							<th class="tbl-text-right">Total Expenses</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{totalIncome | currency}}</td>
+							<td class="text-center">{{totalLeft | currency}}</td>
+							<td class="text-right">{{totalExpenses | currency}}</td>
+						</tr>
+					</tbody>
+				</table> <!-- Expense  table container -->
+					<!-- </div> --> <!-- Table container -->
+			</div> <!-- Expense entries panel container -->
+		</div> <!-- Expense entries container -->
+	</div> <!-- Wrapper class div -->
+
+	<!-- Main footer div -->
+	<div class="main-footer">
+		<br>
+		<span>&copy; Lenny Castaneda</span>
+		<br>
+<!-- 			<span><a href="mailto: lenny.castaneda@gmail.com"><img src="img/glyphicons-social-19-gmail.png" alt="Email"></a></span>&nbsp;
+			<span><a href="https://www.linkedin.com/in/lennyjcastaneda"><img src="img/glyphicons-social-18-linked-in.png" alt="LinkedIn"></a></span>&nbsp;
+			<span><a href="https://github.com/LennyCastaneda"><img src="img/glyphicons-gitHub.png" width="29" alt="GitHub"></a></span>&nbsp;	 -->
+	</div>
+
+	<!-- bower:js -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<!-- endbower -->
+
+    <!-- inject:js -->
+	<script src="js/app.js"></script>
+	<script src="js/controller.js"></script>
+	<!-- endinject -->
+</body>
+</html>

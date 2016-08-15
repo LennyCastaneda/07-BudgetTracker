@@ -1,0 +1,29 @@
+{
+  "name": "07-BudgetTracker",
+  "homepage": "https://github.com/LennyCastaneda/07-BudgetTracker",
+  "authors": [
+    "Lenny Castaneda <lenny.castaneda@gmail.com>"
+  ],
+  "description": "'a web application using AngularJS that lets users track their income/exp",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "overrides": {
+  "bootstrap": {
+    "main": [
+      "dist/css/bootstrap.css",
+      "dist/js/bootstrap.js"
+    ]
+  }
+},
+  "dependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "^3.3.7"
+  }
+}
