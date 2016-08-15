@@ -18,29 +18,32 @@ angular.module('budgetApp', [])
 	// Created an empty array to hold the left over after spending
 	$scope.left = [];
 
+	// Create a totalIncome variable and assign 0 to it for the Summary's single-binding starting value..
 	$scope.totalIncome = 0;
 
+	// Create a totalExpense variable and assign 0 to it for the Summary's single-binding starting value..
 	$scope.totalExpenses = 0;
 
+	// Create a totalLeft variable and assign 0 to it for the Summary's single-binding starting value.
 	$scope.totalLeft = 0;
 
 
 	// Create income function
 	$scope.addIncome = function() {
-		// Make sure user inputs all fields.
-		if ($scope.newIncome.text === 0 || $scope.newIncome.amount === undefined)
-			alert('Please fill in all the fields');
 
+		// Take in the user input values, parse those strings into numbers then push it to the incomes array.
 		$scope.incomes.push(
 		{
-			amount: parseInt($scope.newIncome.amount),
+			amount: parseFloat($scope.newIncome.amount),
 			description: $scope.newIncome.text
 		});
 
-		$scope.totalIncome += parseInt($scope.newIncome.amount);
-		$scope.totalLeft += parseInt($scope.newIncome.amount);
+		// Take in the user input values, parse those strings into numbers then push it to the incomes array.
+		// Then add each increment to the Summary totalIncome and totalLeft single-binding variables.
+		$scope.totalIncome += parseFloat($scope.newIncome.amount);
+		$scope.totalLeft += parseFloat($scope.newIncome.amount);
 
-
+		// Clear newIncome array for user input.
 		$scope.newIncome = {};
 		
 		};
@@ -48,16 +51,19 @@ angular.module('budgetApp', [])
 	// Create expense function
 	$scope.addExpense = function() {
 
-
+		// Take in the user  expense input values, parse those strings into numbers then push it to the expenses array.
 		$scope.expenses.push(
 		{
-			amount: parseInt($scope.newExpense.amount),
+			amount: parseFloat($scope.newExpense.amount),
 			description: $scope.newExpense.text
 		});
 
-		$scope.totalExpenses += parseInt($scope.newExpense.amount);
-		$scope.totalLeft -= parseInt($scope.newExpense.amount);
+		// Take in the user input values, parse those strings into numbers then push it to the expenses array.
+		// Then add each increment to the Summary totalExpenses and totalLeft single-binding variables.
+		$scope.totalExpenses += parseFloat($scope.newExpense.amount);
+		$scope.totalLeft -= parseFloat($scope.newExpense.amount);
 
+		// Clear newExpense array for user input.
 		$scope.newExpense = {};
 	};
 
